@@ -8,27 +8,34 @@
         a {text-decoration: none;color:#FFFFFF;}
         .bt_on {height:50px; width:100px; margin:10px 0;background-color:#FF6600;border-radius:5px;}
         .bt_off {height:50px; width:100px; margin:10px 0;background-color:#00FF00;border-radius:5px;}
+        .lich_tuoi_1 {height:50px; width:90px; margin:10px 0;background-color:#00FF00;border-radius:5px;}
+        .lich_tuoi_2 {height:50px; width:90px; margin:10px 0;background-color:#00FF00;border-radius:5px;}
      </style>
      <meta charset="UTF-8">
  </head>
  <body> 
     <h1>GIAO DIỆN HỆ THỐNG</h1> 
-    <div>Trạng thái trên chân D1: <b><pan id="trangthaiD1"><pan></b></div>
+    <div>CHẾ ĐỘ HOẠT ĐỘNG</div>
     <div>
-      <button class="bt_on" onclick="getdata('control?LED1=1')">ON</button>
+      <button class="bt_on" onclick="getdata('control?LED1=1')">AUTO</button>
       
-      <button class="bt_off" onclick="getdata('control?LED1=0')">OFF</button>
+      <button class="bt_off" onclick="getdata('control?LED1=0')">MANUAL</button>
     </div>
-    <div>Trạng thái trên chân D2: <b><pan id="trangthaiD2"><pan></b></div>
+    <div>ĐẶT LỊCH TƯỚI</div>
     <div>
-      <button class="bt_on" onclick="getdata('control?LED2=1')">ON</button>
-      <button class="bt_off" onclick="getdata('control?LED2=0')">OFF</button>
-    </div>
-    <div id="reponsetext"></div>
-    <div>gia tri chan ADC0: <b><pan id="adc0"><pan></b></div>
-      <div>gia tri chan ADC1: <b><pan id="adc1"><pan></b></div>
-     <div>GIỜ: <b><pan id="gio"><pan></b></div>
-    <div>NGÀY: <b><pan id="ngay"><pan></b></div>
+        <button class="lich_tuoi_1" onclick="getdata('control?lich=1')">lịch tưới 1 6:00-7:00</button>
+        <button class="lich_tuoi_2" onclick="getdata('control?lich=2')">lịch tưới 2 17:00-18:00</button>
+       
+      </div>
+
+    <div>nhiệt độ: <b><pan id="nhietdo"><pan></b></div>
+    <div>độ ẩm không khí: <b><pan id="doamkk"><pan></b></div>
+    <div>độ ẩm đất: <b><pan id="doamdat"><pan></b></div>
+    <div>trạng thái của bơm: <b><pan id="trangthaibom"><pan></b></div>
+    
+    
+     <div>giờ: <b><pan id="gio"><pan></b></div>
+    <div>ngày: <b><pan id="ngay"><pan></b></div>
     
     
     <script>
@@ -45,8 +52,8 @@
       var xhttp = create_obj();
       //-----------Thiết lập dữ liệu và gửi request-------
       function getdata(url){
-        //xhttp.open("GET","//localhost:3001/"+url,true);
-        xhttp.open("GET","//113.168.12.142:3001/"+url,true);
+        xhttp.open("GET","//localhost:3001/"+url,true);
+        //xhttp.open("GET","//113.168.12.142:3001/"+url,true);
         xhttp.onreadystatechange = process;//nhận reponse 
         xhttp.send();
       }
@@ -70,27 +77,21 @@
           //------Update data sử dụng javascript-------------------
           var trangthaiD1D2_JSON = xhttp.responseText;
           var Obj = JSON.parse(trangthaiD1D2_JSON);
-          if(Obj.LED1=='1')
+          if(Obj.trangthaibom=='1')
           {
               var a= "ON";
           }
-          if(Obj.LED1=='0')
+          if(Obj.trangthaibom=='0')
           {
               var a="OFF";
           }
-          if(Obj.LED2=='1')
-          {
-              var b= "ON";
-          }
-          if(Obj.LED2=='0')
-          {
-              var b="OFF";
-          }
+          
 
-          document.getElementById("trangthaiD1").innerHTML = a;
-          document.getElementById("trangthaiD2").innerHTML = b;
-          document.getElementById("adc0").innerHTML = Obj.adc0;
-          document.getElementById("adc1").innerHTML = Obj.adc1;
+          document.getElementById("trangthaibom").innerHTML = a;
+          
+          document.getElementById("nhietdo").innerHTML = Obj.nhietdo;
+          document.getElementById("doamkk").innerHTML = Obj.doamkk;
+          document.getElementById("doamdat").innerHTML = Obj.doamdat;
           document.getElementById("ngay").innerHTML = Obj.ngay;
           document.getElementById("gio").innerHTML = Obj.gio;
         }
