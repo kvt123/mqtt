@@ -63,7 +63,7 @@
     //   // Fetch one and one row
        echo "<TABLE id='c4ytable'>";
     //  // echo "<TR><TH>Sr.No.</TH><TH>Station</TH><TH>ADC Value</TH><TH>Date</TH><TH>Time</TH></TR>";
-       echo "<TR><TH>ADC0</TH><TH>ADC1</TH><TH>LED1</TH><TH>LED2</TH><TH>NGAY</TH><TH>GIO</TH></TR>";
+       echo "<TR><TH>nhiet do</TH><TH>do am khong khi</TH><TH>do am dat</TH><TH>trang thai bom</TH><TH>ngay</TH><TH>gio</TH></TR>";
        while ($row=mysqli_fetch_row($result))
        {
          echo "<TR>";
