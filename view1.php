@@ -38,7 +38,7 @@
         // echo "<TD>".$row[5]."</TD>";
         // echo "</TR>";
         // echo "</TABLE>";
-        echo "{\"adc0\":\"$row[1]\",\"adc1\":\"$row[2]\",\"LED1\":\"$row[3]\",\"LED2\":\"$row[4]\",\"ngay\":\"$row[6]\",\"gio\":\"$row[7]\"}";
+        echo "{\"nhietdo\":\"$row[1]\",\"doamkk\":\"$row[2]\",\"doamdat\":\"$row[3]\",\"trangthaibom\":\"$row[4]\",\"ngay\":\"$row[6]\",\"gio\":\"$row[7]\"}";
         
         }
         mysqli_free_result($result);
