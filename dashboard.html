@@ -6,10 +6,12 @@
         body {text-align:center;}
         h1 {color:#003399;}
         a {text-decoration: none;color:#FFFFFF;}
-        .bt_on {height:50px; width:100px; margin:10px 0;background-color:#FF6600;border-radius:5px;}
-        .bt_off {height:50px; width:100px; margin:10px 0;background-color:#00FF00;border-radius:5px;}
+        .che_do_auto {height:50px; width:100px; margin:10px 0;background-color:#00FF00;border-radius:5px;}
+        .che_do_manual {height:50px; width:100px; margin:10px 0;background-color:#00FF00;border-radius:5px;}
         .lich_tuoi_1 {height:50px; width:90px; margin:10px 0;background-color:#00FF00;border-radius:5px;}
         .lich_tuoi_2 {height:50px; width:90px; margin:10px 0;background-color:#00FF00;border-radius:5px;}
+        .bnt_on {height:50px; width:90px; margin:10px 0;background-color:#FF6600;border-radius:5px;}
+        .bnt_off {height:50px; width:90px; margin:10px 0;background-color:#00FF00;border-radius:5px;}
      </style>
      <meta charset="UTF-8">
  </head>
@@ -17,14 +19,21 @@
     <h1>GIAO DIỆN HỆ THỐNG</h1> 
     <div>CHẾ ĐỘ HOẠT ĐỘNG</div>
     <div>
-      <button class="bt_on" onclick="getdata('control?LED1=1')">AUTO</button>
+      <button class="che_do_auto" onclick="getdata('control?che_do=0')">AUTO</button>
       
-      <button class="bt_off" onclick="getdata('control?LED1=0')">MANUAL</button>
+      <button class="che_do_manual" onclick="getdata('control?che_do=1')">MANUAL</button>
     </div>
     <div>ĐẶT LỊCH TƯỚI</div>
     <div>
-        <button class="lich_tuoi_1" onclick="getdata('control?lich=1')">lịch tưới 1 6:00-7:00</button>
-        <button class="lich_tuoi_2" onclick="getdata('control?lich=2')">lịch tưới 2 17:00-18:00</button>
+        <button class="lich_tuoi_1" onclick="getdata('control?lich=2')">lịch tưới 1 6:00-7:00</button>
+        <button class="lich_tuoi_2" onclick="getdata('control?lich=3')">lịch tưới 2 17:00-18:00</button>
+       
+      </div>
+
+      <div>ĐIỀU KHIỂN BƠM</div>
+    <div>
+        <button class="bnt_on" onclick="getdata('control?bnt=4')">BẬT</button>
+        <button class="bnt_off" onclick="getdata('control?bnt=5')">TẮT</button>
        
       </div>
 
@@ -52,8 +61,8 @@
       var xhttp = create_obj();
       //-----------Thiết lập dữ liệu và gửi request-------
       function getdata(url){
-        xhttp.open("GET","//localhost:3001/"+url,true);
-        //xhttp.open("GET","//113.168.12.142:3001/"+url,true);
+        //xhttp.open("GET","//localhost:3001/"+url,true);
+        xhttp.open("GET","//45.76.186.184:3001/"+url,true);
         xhttp.onreadystatechange = process;//nhận reponse 
         xhttp.send();
       }
