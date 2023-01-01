@@ -1,8 +1,8 @@
 <?php
     //Connect to database and create table
     $servername = "localhost";
-    $username = "root";
-    $password = "";
+    $username = "admin";
+    $password = "030500";
     $dbname = "thuchanh";
 
     // Create connection
@@ -18,7 +18,7 @@
 
 
 <?php 
-    $sql = "SELECT * FROM thuchanh2 ORDER BY id DESC";
+    $sql = "SELECT * FROM thuchanh1 ORDER BY id DESC";
     
   
     //$sql = "SELECT * FROM logs WHERE id=a";
