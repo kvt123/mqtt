@@ -14,8 +14,8 @@ var mysql= require('mysql');
 
 var db= mysql.createConnection({
     host : 'localhost',
-    user: 'root',
-    password : "",
+    user: 'admin',
+    password : "030500",
     database : 'thuchanh'
 })
 db.connect(()=>{
@@ -47,12 +47,12 @@ client.on("message",function(topic,message){
     console.log(message.toString());
      var Obj = JSON.parse(message);
      //console.log(Obj.adc0);
-       var dbstat = 'insert into thuchanh2 set ?'
+       var dbstat = 'insert into thuchanh1 set ?'
        var data = {
-           ADC0 : Obj.adc0,
-          ADC1 : Obj.adc1,
-           LED1 : Obj.LED1,
-           LED2 : Obj.LED2,
+           nhietdo : Obj.nd,
+          doamkk : Obj.dak,
+          doamdat : Obj.dad,
+          trangthaibom : Obj.ttb,
            Date : ngay,
            Time : gio
        }
